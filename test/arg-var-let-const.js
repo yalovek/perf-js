@@ -1,32 +1,32 @@
 const Benchmark = require('benchmark');
 const suite = new Benchmark.Suite;
-const f = (o) => o.d;
+const get = object => object.a;
 
 suite.add('argument', function() {
-  f({
-    d: 10
+  get({
+    a: 1
   });
 })
 .add('var', function() {
-  var o = {
-    d: 10
+  var object = {
+    a: 1
   };
 
-  f(o);
+  get(object);
 })
 .add('let', function() {
-  let o = {
-    d: 10
+  let object = {
+    a: 1
   };
 
-  f(o);
+  get(object);
 })
 .add('const', function() {
-  const o = {
-    d: 10
+  const object = {
+    a: 1
   };
 
-  f(o);
+  get(object);
 })
 // add listeners
 .on('cycle', function(event) {
@@ -37,4 +37,3 @@ suite.add('argument', function() {
 })
 // run async
 .run({ 'async': true });
-

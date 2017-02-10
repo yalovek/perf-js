@@ -1,15 +1,15 @@
 const Benchmark = require('benchmark');
 const suite = new Benchmark.Suite;
-const o = {
-  d: 10
+const object = {
+  a: 1
 };
-const f = Object.freeze(o);
+const freeze = Object.freeze(object);
 
 suite.add('object', function() {
-  for (var k in o);
+  for (var key in object);
 })
 .add('freeze', function() {
-  for (var k in f);
+  for (var key in freeze);
 })
 // add listeners
 .on('cycle', function(event) {
@@ -20,4 +20,3 @@ suite.add('object', function() {
 })
 // run async
 .run({ 'async': true });
-
